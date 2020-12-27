@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
-import ValidationComponent from './components/validation/ValidationComponent'
+import ValidationComponent from './components/validation/ValidationComponent';
+import CharComponent from './components/char/CharComponent'
 
 class App extends Component {
 
   state = {
-    length: 0
+    text: ''
   }
 
   render() {
+    const charArray = this.state.text.split('');
+    const charArrayComponents = charArray.map(character => <CharComponent character={character}/>);
     return (
       <div className="App">
         <input type="text" onChange={this.outputLength}></input>
-        <p>Input length: {this.state.length}</p>
-        <ValidationComponent textLength={this.state.length}/>
+        <p>Input length: {this.state.text.length}</p>
+        {charArrayComponents}
       </div>
     );
   }
 
   outputLength = (event) => {
     const inputValue = event.target.value;
-    this.setState({length: inputValue.length});
+    this.setState({text: inputValue});
     console.log(inputValue.length);
   }
 }
