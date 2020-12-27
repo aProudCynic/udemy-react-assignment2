@@ -17,6 +17,7 @@ class App extends Component {
       <div className="App">
         <input type="text" onChange={this.outputText} value={this.state.text}></input>
         <p>Input length: {this.state.text.length}</p>
+        <ValidationComponent textLength={this.state.text.length}/>
         {charArrayComponents}
       </div>
     );
