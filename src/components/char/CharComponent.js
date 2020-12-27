@@ -4,12 +4,12 @@ const charComponent = (props) => {
     const style = {
         display: 'inline-block',
         padding: '16px',
-        'text-align': 'center',
+        textAlign: 'center',
         margin: '16px',
         border: '1px solid black'
     }
     return (
-        <div style={style}>
+        <div style={style} onClick={props.clicked}>
             <p>{props.character}</p>
         </div>
     );

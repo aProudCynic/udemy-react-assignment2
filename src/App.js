@@ -11,21 +11,26 @@ class App extends Component {
 
   render() {
     const charArray = this.state.text.split('');
-    const charArrayComponents = charArray.map(character => <CharComponent character={character}/>);
+    const charArrayComponents = charArray.map((character, index) => 
+    <CharComponent key={index} character={character} clicked={() => this.deleteChar(index)}/>);
     return (
       <div className="App">
-        <input type="text" onChange={this.outputLength}></input>
+        <input type="text" onChange={this.outputText} value={this.state.text}></input>
         <p>Input length: {this.state.text.length}</p>
         {charArrayComponents}
       </div>
     );
   }
 
-  outputLength = (event) => {
+  outputText = (event) => {
     const inputValue = event.target.value;
     this.setState({text: inputValue});
-    console.log(inputValue.length);
   }
+
+  deleteChar = (index) => {
+    console.log(index);
+  }
+
 }
 
 export default App;
