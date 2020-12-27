@@ -28,7 +28,8 @@ class App extends Component {
   }
 
   deleteChar = (index) => {
-    console.log(index);
+    const newText = this.state.text.slice(0, index) + this.state.text.slice(index + 1);
+    this.setState({text: newText});
   }
 
 }
